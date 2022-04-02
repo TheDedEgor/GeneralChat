@@ -13,8 +13,6 @@ namespace ServiceChat
     {
         [OperationContract]
         string GetData(int value);
-
-       
     }
 
     //[DataContract]
