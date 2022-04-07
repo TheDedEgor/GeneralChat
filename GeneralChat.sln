@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralChat", "GeneralChat\GeneralChat.csproj", "{CA49EE1A-7727-441D-95E8-3549ECEB10EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{369E96A2-2715-4324-BE70-053FD5B89FC7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CA49EE1A-7727-441D-95E8-3549ECEB10EE} = {CA49EE1A-7727-441D-95E8-3549ECEB10EE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
