@@ -96,6 +96,19 @@
           <xs:sequence />
         </xs:complexType>
       </xs:element>
+      <xs:element name="ChangeOnlineStatusUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="status" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ChangeOnlineStatusUserResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
     </xs:schema>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="anyType" nillable="true" type="xs:anyType" />
@@ -156,6 +169,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="AddMessages" nillable="true" type="tns:ArrayOfMessage" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Online" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="User" nillable="true" type="tns:User" />
@@ -203,6 +217,12 @@
   <wsdl:message name="IChat_ClearAddMessages_OutputMessage">
     <wsdl:part name="parameters" element="tns:ClearAddMessagesResponse" />
   </wsdl:message>
+  <wsdl:message name="IChat_ChangeOnlineStatusUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOnlineStatusUser" />
+  </wsdl:message>
+  <wsdl:message name="IChat_ChangeOnlineStatusUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeOnlineStatusUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IChat">
     <wsdl:operation name="UserRegistration">
       <wsdl:input wsaw:Action="http://tempuri.org/IChat/UserRegistration" message="tns:IChat_UserRegistration_InputMessage" />
@@ -231,6 +251,10 @@
     <wsdl:operation name="ClearAddMessages">
       <wsdl:input wsaw:Action="http://tempuri.org/IChat/ClearAddMessages" message="tns:IChat_ClearAddMessages_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChat/ClearAddMessagesResponse" message="tns:IChat_ClearAddMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOnlineStatusUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChat/ChangeOnlineStatusUser" message="tns:IChat_ChangeOnlineStatusUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChat/ChangeOnlineStatusUserResponse" message="tns:IChat_ChangeOnlineStatusUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IChat" type="tns:IChat">
@@ -291,6 +315,15 @@
     </wsdl:operation>
     <wsdl:operation name="ClearAddMessages">
       <soap:operation soapAction="http://tempuri.org/IChat/ClearAddMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeOnlineStatusUser">
+      <soap:operation soapAction="http://tempuri.org/IChat/ChangeOnlineStatusUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

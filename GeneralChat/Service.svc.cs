@@ -100,5 +100,10 @@ namespace ServiceChat
         {
             Users.GetUser(name).AddMessages.Clear();
         }
+
+        public void ChangeOnlineStatusUser(string name, bool status)
+        {
+            Users.GetUser(name).Online = status;
+        }
     }
 }

@@ -147,5 +147,20 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\enter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\registered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\initial.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

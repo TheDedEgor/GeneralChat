@@ -27,6 +27,9 @@ namespace ServiceChat
 
         [OperationContract]
         void ClearAddMessages(string name);
+
+        [OperationContract]
+        void ChangeOnlineStatusUser(string name, bool status);
     }
 
     [DataContract]
@@ -36,12 +39,16 @@ namespace ServiceChat
         public string Name { get; set; }
 
         [DataMember]
+        public bool Online { get; set; }
+
+        [DataMember]
         public List<Message> AddMessages { get; set; }
 
         public User(string Name)
         {
             this.Name = Name;
             this.AddMessages = new List<Message>();
+            this.Online = true;
         }
 
         public User() { }

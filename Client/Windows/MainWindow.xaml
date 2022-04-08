@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Чат" Height="465" Width="530"
-        Closing="MainWindow_Closing">
+        Title="Чат" Height="600" Width="700"
+        Closing="MainWindow_Closing" Icon="/Windows/chat.png" ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="389*"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="81*"/>
-            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="11*"/>
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <ItemsControl x:Name="chat" >
@@ -26,13 +26,15 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Background="#FF7CA1E5" CornerRadius="15" HorizontalAlignment="{Binding Align}" Margin="5">
-                            <TextBlock Text="{Binding Text}" FontSize="16" Margin="7"/>
+                            <TextBlock Text="{Binding Text}" FontSize="16" Margin="7" MaxWidth="350" TextWrapping="Wrap"/>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <TextBox x:Name="sendMessage" Grid.Row="1" Grid.Column="0" FontSize="16" KeyDown="sendMessage_KeyDown"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Отправить" Click="Button_Click"/>
+        <TextBox x:Name="sendMessage" Grid.Row="1" Grid.Column="0" FontSize="16" TextWrapping="Wrap" PreviewKeyDown="sendMessage_KeyDown"/>
+        <Button Grid.Row="1" Grid.Column="1" Click="Button_Click" Padding="5" Background="#FFA0BAF1" BorderThickness="3,3,3,3" BorderBrush="#FF9276B5">
+            <Image Source="/Windows/send.png"/>
+        </Button>
     </Grid>
 </Window>

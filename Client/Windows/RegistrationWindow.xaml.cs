@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using Client.ChatService;
 
@@ -25,11 +23,12 @@ namespace Client.Windows
                 client.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
             if (!client.UserRegistrationAsync(textBoxRegName.Text).Result)
             {
                 MessageBox.Show("Пользователь с данным именем уже зарегистрирован, попробуйте другое!");
+                textBoxRegName.Text = "";
             }
             else
             {
@@ -39,6 +38,14 @@ namespace Client.Windows
                 Close();
                 newWindow.Show();
             }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            client.Close();
+            var newWindow = new InitialWindow();
+            Close();
+            newWindow.Show();
         }
     }
 }

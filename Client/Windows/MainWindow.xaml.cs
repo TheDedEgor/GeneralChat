@@ -25,8 +25,6 @@ namespace Client
 
         private string name;
 
-        private int countUserMessages;
-
         private DispatcherTimer timer;
 
         public MainWindow(ChatClient client, string name)
@@ -71,13 +69,19 @@ namespace Client
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
+            client.ChangeOnlineStatusUserAsync(name, false);
             timer.Stop();
             client.Close();
         }
 
         private void sendMessage_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.Enter)
+            {
+                sendMessage.Text += "\n";
+                sendMessage.SelectionStart = sendMessage.Text.Length;
+            }
+            else if (e.Key == Key.Enter)
             {
                 var message = $"{name}: {sendMessage.Text}";
                 Messages.Add(new Message() { Text = message, Align = HorizontalAlignment.Right });

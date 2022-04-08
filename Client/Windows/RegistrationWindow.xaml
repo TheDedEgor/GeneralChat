@@ -6,15 +6,20 @@
         xmlns:local="clr-namespace:Client.Windows"
         mc:Ignorable="d"
         Title="Регистрация" Height="300" Width="465" ResizeMode="NoResize"
-        Closing="RegistrationWindow_Closing">
+        Closing="RegistrationWindow_Closing" Icon="/Windows/registered.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Введите имя для регистрации в чате" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18"/>
-        <TextBox x:Name="textBoxRegName" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="150" FontSize="15"/>
-        <Button Grid.Row="2" Content="Продолжить" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" Padding="5" Click="Button_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Введите имя для регистрации в чате" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18"/>
+        <TextBox x:Name="textBoxRegName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="150" FontSize="15"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="Назад" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Padding="5" Width="95" Margin="5" Click="BackButton_Click" Background="#FF7884C2"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Продолжить" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Padding="5" Width="95" Margin="5" Click="ContinueButton_Click" Background="#FF7884C2"/>
     </Grid>
 </Window>

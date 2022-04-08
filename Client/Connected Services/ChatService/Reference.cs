@@ -89,6 +89,9 @@ namespace Client.ChatService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool OnlineField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -121,6 +124,19 @@ namespace Client.ChatService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Online {
+            get {
+                return this.OnlineField;
+            }
+            set {
+                if ((this.OnlineField.Equals(value) != true)) {
+                    this.OnlineField = value;
+                    this.RaisePropertyChanged("Online");
                 }
             }
         }
@@ -180,6 +196,12 @@ namespace Client.ChatService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChat/ClearAddMessages", ReplyAction="http://tempuri.org/IChat/ClearAddMessagesResponse")]
         System.Threading.Tasks.Task ClearAddMessagesAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChat/ChangeOnlineStatusUser", ReplyAction="http://tempuri.org/IChat/ChangeOnlineStatusUserResponse")]
+        void ChangeOnlineStatusUser(string name, bool status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChat/ChangeOnlineStatusUser", ReplyAction="http://tempuri.org/IChat/ChangeOnlineStatusUserResponse")]
+        System.Threading.Tasks.Task ChangeOnlineStatusUserAsync(string name, bool status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -263,6 +285,14 @@ namespace Client.ChatService {
         
         public System.Threading.Tasks.Task ClearAddMessagesAsync(string name) {
             return base.Channel.ClearAddMessagesAsync(name);
+        }
+        
+        public void ChangeOnlineStatusUser(string name, bool status) {
+            base.Channel.ChangeOnlineStatusUser(name, status);
+        }
+        
+        public System.Threading.Tasks.Task ChangeOnlineStatusUserAsync(string name, bool status) {
+            return base.Channel.ChangeOnlineStatusUserAsync(name, status);
         }
     }
 }

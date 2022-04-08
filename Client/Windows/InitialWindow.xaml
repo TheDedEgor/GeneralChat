@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Client.Windows"
         mc:Ignorable="d"
         Title="Вход/Регистрация" Height="275" Width="405" ResizeMode="NoResize"
-        Closing="InitialWindow_Closing">
+        Closing="InitialWindow_Closing" Icon="/Windows/initial.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Вход" FontSize="16" Margin="5" Padding="5" Width="105" Click="Button_Click_1"/>
-        <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Регистрация" FontSize="16" Margin="5" Padding="5" Width="105" Click="Button_Click"/>
+        <Button Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Вход" FontSize="16" Margin="5" Padding="5" Width="105" Click="Button_Click_1" Background="#FFF1EC97" BorderThickness="2,2,2,2" BorderBrush="#FF3C2D2D"/>
+        <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Регистрация" FontSize="16" Margin="5" Padding="5" Width="105" Click="Button_Click" Background="#FF8ED8ED" BorderThickness="2,2,2,2" BorderBrush="#FF3C2D2D"/>
     </Grid>
 </Window>

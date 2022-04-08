@@ -23,20 +23,37 @@ namespace Client.Windows
                 client.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
             if (!client.UserAuthorizationAsync(textBoxAuthName.Text).Result)
             {
                 MessageBox.Show("Неверное имя пользователя!");
+                textBoxAuthName.Text = "";
             }
             else
             {
+                var user = client.GetUserAsync(textBoxAuthName.Text).Result;
+                if(user.Online == true)
+                {
+                    MessageBox.Show($"Данный пользователь уже вошел в чат с таким именем");
+                    textBoxAuthName.Text = "";
+                    return;
+                }
                 MessageBox.Show($"Вы вошли в чат под именем - {textBoxAuthName.Text}");
                 var newWindow = new MainWindow(client, textBoxAuthName.Text);
                 exit = false;
+                client.ChangeOnlineStatusUserAsync(textBoxAuthName.Text, true);
                 Close();
                 newWindow.Show();
             }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            client.Close();
+            var newWindow = new InitialWindow();
+            Close();
+            newWindow.Show();
         }
     }
 }
